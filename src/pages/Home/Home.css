@@ -1,10 +1,3 @@
-.paper {
-    height: 28rem;
-    width: 48rem;
-    display: grid;
-    padding: 5rem 5rem 2rem 5rem;
-}
-
 .mainText {
     display: grid;
     align-items: start;
@@ -15,10 +8,3 @@
 .mainText h2 {
     font-weight: 500;
 }
-
-.gradientBorder { 
-    background-image: radial-gradient(circle at 100% 100%, transparent 1px, #d9dd03 1px, #d9dd03 5px, transparent 5px), linear-gradient(to right, #d9dd03, #59a7e3), radial-gradient(circle at 0% 100%, transparent 1px, #59a7e3 1px, #59a7e3 5px, transparent 5px), linear-gradient(to bottom, #59a7e3, #9dbd00), radial-gradient(circle at 0% 0%, transparent 1px, #9dbd00 1px, #9dbd00 5px, transparent 5px), linear-gradient(to left, #9dbd00, #d9dd03), radial-gradient(circle at 100% 0%, transparent 1px, #d9dd03 1px, #d9dd03 5px, transparent 5px), linear-gradient(to top, #d9dd03, #d9dd03);
-    background-size: 5px 5px, calc(100% - 10px) 4px, 5px 5px, 4px calc(100% - 10px);
-    background-position: top left,top center,top right,center right, bottom right,bottom center,bottom left,center left;
-    background-repeat: no-repeat;
-  }
