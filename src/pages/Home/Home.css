@@ -1,25 +1,10 @@
-.mainText {
+.homeMain {
     display: grid;
     align-items: start;
     row-gap: 1rem;
-    height: 8rem;
+    height: auto;
 }
 
 .mainText h2 {
     font-weight: 500;
-}
-
-.nextButton.nextButton {
-    font-size: 15px;
-    letter-spacing: 2px;
-    justify-self: flex-end;
-    height: 2.5rem;
-    transition: 500ms;
-}
-
-.nextButton.nextButton:hover {
-    background-color: white;
-    border: 1px solid black;
-    color: black;
-
 }

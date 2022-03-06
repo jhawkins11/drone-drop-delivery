@@ -1,10 +1,12 @@
 .signUpFormContainer {
     display: grid;
+    margin-top: 20px;
 }
 
 .signUpForm {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin: 10px 0;
     column-gap: 2rem;
     row-gap: 1rem;
     width: 70%;
