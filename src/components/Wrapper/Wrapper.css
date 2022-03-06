@@ -1,6 +1,8 @@
 .paper {
-    height: 28rem;
-    width: 48rem;
+    min-height: 28rem;
+    min-width: 48rem;
+    height: auto;
+    width: auto;
     display: grid;
     padding: 5rem 5rem 0rem 5rem;
     position: relative;
