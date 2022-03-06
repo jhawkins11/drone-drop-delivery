@@ -1,14 +1,26 @@
 import { TextField } from '@mui/material';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import {
+  setAddress,
+  setName,
+  useAddressState,
+} from '../../store/slices/addressSlice';
 import './SignUpForm.css';
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
   const { register, handleSubmit, resetField } = useForm();
-  const onSubmit = (formData) => {
-    resetField('firstName');
-    resetField('lastName');
-    resetField('address');
+
+  const addressState = useAddressState();
+  const navigate = useNavigate();
+
+  const onSubmit = ({ firstName, lastName, address }) => {
+    dispatch(setName({ firstName, lastName }));
+    dispatch(setAddress(address));
+    navigate('/deliveryPreview');
   };
   return (
     <div className="signUpFormContainer">
@@ -19,15 +31,27 @@ const SignUpForm = () => {
       >
         <label>
           <span className="inputLabel">First Name</span>
-          <TextField {...register('firstName', { required: true })} fullWidth />
+          <TextField
+            {...register('firstName', { required: true })}
+            defaultValue={addressState.firstName || ''}
+            fullWidth
+          />
         </label>
         <label>
           <span className="inputLabel">Last Name</span>
-          <TextField {...register('lastName', { required: true })} fullWidth />
+          <TextField
+            {...register('lastName', { required: true })}
+            defaultValue={addressState.lastName || ''}
+            fullWidth
+          />
         </label>
         <label className="addressInput">
           <span className="inputLabel">Address</span>
-          <TextField {...register('address', { required: true })} fullWidth />
+          <TextField
+            {...register('address', { required: true })}
+            defaultValue={addressState.address || ''}
+            fullWidth
+          />
         </label>
       </form>
     </div>

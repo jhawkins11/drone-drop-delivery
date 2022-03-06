@@ -6,7 +6,6 @@ import Wrapper from '../../components/Wrapper/Wrapper';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
-  const navigate = useNavigate();
   return (
     <Wrapper>
       <div className="homeMain">
@@ -21,8 +20,9 @@ const Home = () => {
         <Wrapper.BottomRow>
           <Button
             variant="contained"
+            type="submit"
             className="bottomRowButton rightButton"
-            onClick={() => navigate('/deliveryPreview')}
+            form="signUpForm"
           >
             Next
           </Button>
