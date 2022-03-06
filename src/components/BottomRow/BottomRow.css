@@ -1,0 +1,7 @@
+.bottomRow {
+    height: 4rem;
+    display: grid;
+    padding: 5px;
+    grid-column: -1 / 1;
+    align-items: center;
+}

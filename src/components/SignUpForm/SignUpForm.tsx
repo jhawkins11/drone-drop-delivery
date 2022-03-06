@@ -30,9 +30,6 @@ const SignUpForm = () => {
           <TextField {...register('address', { required: true })} fullWidth />
         </label>
       </form>
-      <Button variant="contained" className="nextButton" type="submit">
-        Next
-      </Button>
     </div>
   );
 };

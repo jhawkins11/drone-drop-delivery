@@ -27,18 +27,3 @@
 .addressInput {
     grid-column: -1 / 1;
 }
-
-.nextButton.nextButton {
-    font-size: 15px;
-    letter-spacing: 2px;
-    justify-self: flex-end;
-    height: 2.5rem;
-    transition: 500ms;
-}
-
-.nextButton.nextButton:hover {
-    background-color: white;
-    border: 1px solid black;
-    color: black;
-
-}

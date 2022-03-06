@@ -1,5 +1,6 @@
 import { Paper } from '@mui/material';
 import React from 'react';
+import BottomRow from '../BottomRow/BottomRow';
 import './Wrapper.css';
 
 const Wrapper = ({ children }) => {
@@ -9,5 +10,7 @@ const Wrapper = ({ children }) => {
     </Paper>
   );
 };
+
+Wrapper.BottomRow = BottomRow;
 
 export default Wrapper;

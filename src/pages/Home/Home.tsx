@@ -1,4 +1,4 @@
-import { Paper, Typography } from '@mui/material';
+import { Button, Paper, Typography } from '@mui/material';
 import './Home.css';
 import React from 'react';
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
@@ -16,6 +16,11 @@ const Home = () => {
         </Typography>
       </div>
       <SignUpForm />
+      <Wrapper.BottomRow>
+        <Button variant="contained" className="nextButton" type="submit">
+          Next
+        </Button>
+      </Wrapper.BottomRow>
     </Wrapper>
   );
 };
