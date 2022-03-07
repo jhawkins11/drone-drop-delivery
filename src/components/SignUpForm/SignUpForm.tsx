@@ -8,11 +8,12 @@ import {
   setName,
   useAddressState,
 } from '../../store/slices/addressSlice';
+import GoogleAutocomplete from '../GoogleAutocomplete';
 import './SignUpForm.css';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
-  const { register, handleSubmit, resetField } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const addressState = useAddressState();
   const navigate = useNavigate();
@@ -47,11 +48,7 @@ const SignUpForm = () => {
         </label>
         <label className="addressInput">
           <span className="inputLabel">Address</span>
-          <TextField
-            {...register('address', { required: true })}
-            defaultValue={addressState.address || ''}
-            fullWidth
-          />
+          <GoogleAutocomplete />
         </label>
       </form>
     </div>

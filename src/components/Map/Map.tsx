@@ -1,32 +1,37 @@
-import React from 'react';
-import {
-  GoogleMap,
-  Marker,
-  useJsApiLoader,
-} from '@react-google-maps/api';
+import React from "react";
+import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 
 const containerStyle = {
-  width: '100%',
-  height: '20rem',
+  width: "100%",
+  height: "20rem",
 };
 
 type MapMarker = {
-  lat: number
-  lng: number
+  lat: number;
+  lng: number;
 };
 
-const Map = ({markers}: {markers: MapMarker[]}) => {
+const Map = ({
+  markers,
+  onMapLoad,
+}: {
+  markers: MapMarker[];
+  onMapLoad: (map) => void;
+}) => {
   const { isLoaded, loadError } = useJsApiLoader({
-    id: 'google-map-script',
+    id: "google-map-script",
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
   });
 
   const renderMap = () => {
     return (
-      <GoogleMap mapContainerStyle={containerStyle} center={markers[0]} zoom={10}>
-          {markers.map(marker => {
-              return <Marker position={marker} />
-          })}
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={markers[0]}
+        zoom={17}
+        onLoad={onMapLoad}
+      >
+        <Marker position={markers[0]} />
       </GoogleMap>
     );
   };

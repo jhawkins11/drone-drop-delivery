@@ -1,13 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
-import { AppState } from '../store';
+import { createSlice } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
+import { AppState } from "../store";
 
 const initialState = {
-  firstName: '',
-  lastName: '',
-  address: '',
-  lat: null,
-  lng: null,
+  firstName: "",
+  lastName: "",
+  address: "",
+  placeID: "",
   validatedCoordinates: {
     lat: null,
     lng: null,
@@ -15,20 +14,19 @@ const initialState = {
 };
 
 const saveAddress = (address) => {
-  localStorage.setItem('address', JSON.stringify(address));
+  localStorage.setItem("address", JSON.stringify(address));
 };
 
 export const addressSlice = createSlice({
-  name: 'address',
+  name: "address",
   initialState,
   reducers: {
     setName(state, action) {
       state.firstName = action.payload.firstName;
       state.lastName = action.payload.lastName;
     },
-    setCoordinates(state, action) {
-      state.lat = action.payload.lat;
-      state.lng = action.payload.lng;
+    setPlaceID(state, action) {
+      state.placeID = action.payload;
     },
     setValidatedCoordinates(state, action) {
       state.validatedCoordinates.lat = action.payload.lat;
@@ -40,7 +38,7 @@ export const addressSlice = createSlice({
   },
 });
 
-export const { setName, setCoordinates, setValidatedCoordinates, setAddress } =
+export const { setName, setPlaceID, setValidatedCoordinates, setAddress } =
   addressSlice.actions;
 export default addressSlice.reducer;
 
