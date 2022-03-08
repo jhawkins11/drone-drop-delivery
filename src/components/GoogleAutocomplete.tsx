@@ -1,18 +1,19 @@
-import React from 'react';
-import parse from 'autosuggest-highlight/parse';
-import throttle from 'lodash/throttle';
-import { Autocomplete, Box, Grid, TextField, Typography } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { setPlaceID } from '../store/slices/addressSlice';
+import React from "react";
+import parse from "autosuggest-highlight/parse";
+import throttle from "lodash/throttle";
+import { Autocomplete, Box, Grid, TextField, Typography } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { setAddress, setPlaceID } from "../store/slices/addressSlice";
+import { useForm } from "react-hook-form";
 
 function loadScript(src, position, id) {
   if (!position) {
     return;
   }
 
-  const script = document.createElement('script');
-  script.setAttribute('async', '');
-  script.setAttribute('id', id);
+  const script = document.createElement("script");
+  script.setAttribute("async", "");
+  script.setAttribute("id", id);
   script.src = src;
   position.appendChild(script);
 }
@@ -21,16 +22,16 @@ const autocompleteService = { current: null };
 
 export default function GoogleMaps() {
   const [value, setValue] = React.useState(null);
-  const [inputValue, setInputValue] = React.useState('');
+  const [inputValue, setInputValue] = React.useState("");
   const [options, setOptions] = React.useState([]);
   const loaded = React.useRef(false);
 
-  if (typeof window !== 'undefined' && !loaded.current) {
-    if (!document.querySelector('#google-maps')) {
+  if (typeof window !== "undefined" && !loaded.current) {
+    if (!document.querySelector("#google-maps")) {
       loadScript(
         `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places`,
-        document.querySelector('head'),
-        'google-maps'
+        document.querySelector("head"),
+        "google-maps"
       );
     }
 
@@ -58,7 +59,7 @@ export default function GoogleMaps() {
       return;
     }
 
-    if (inputValue === '') {
+    if (inputValue === "") {
       setOptions(value ? [value] : []);
       return;
     }
@@ -84,11 +85,13 @@ export default function GoogleMaps() {
     };
   }, [value, inputValue, fetch]);
 
+  console.log(options);
+
   return (
     <Autocomplete
       id="address"
       getOptionLabel={(option) =>
-        typeof option === 'string' ? option : option.description
+        typeof option === "string" ? option : option.description
       }
       filterOptions={(x) => x}
       options={options}
@@ -105,12 +108,17 @@ export default function GoogleMaps() {
       }}
       onSelect={() => {
         dispatch(setPlaceID(options[0].place_id));
+        options[0] && dispatch(setAddress(options[0].description));
       }}
       renderInput={(params) => (
         <TextField
           {...params}
-          inputProps={{ ...params.inputProps, autoComplete: 'none' }}
+          inputProps={{
+            ...params.inputProps,
+            autoComplete: "none",
+          }}
           fullWidth
+          required
         />
       )}
       renderOption={(props, option) => {

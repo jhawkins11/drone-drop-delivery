@@ -1,3 +1,8 @@
-.confirmLocation {
-    margin-bottom: 15px;
+.confirmLocation.confirmLocation {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.checkIcon {
+  margin-right: 7px;
 }

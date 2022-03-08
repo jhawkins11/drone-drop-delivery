@@ -1,32 +1,38 @@
 .bottomRow {
-    height: 4rem;
-    display: grid;
-    padding: 20px 0;
-    grid-column: -1 / 1;
-    align-items: center;
-    grid-auto-flow: column;
-    align-self: flex-end;
+  height: 4rem;
+  display: grid;
+  padding: 20px 0;
+  grid-column: -1 / 1;
+  align-items: center;
+  grid-auto-flow: column;
+  align-self: flex-end;
 }
 
 .bottomRowButton.bottomRowButton {
-    font-size: 15px;
-    letter-spacing: 2px;
-    height: 2.5rem;
-    transition: 500ms;
+  font-size: 15px;
+  letter-spacing: 2px;
+  height: 2.5rem;
+  transition: 500ms;
 }
 
 .bottomRowButton.bottomRowButton:hover {
-    background-color: white;
-    border: 1px solid black;
-    color: black;
-
+  background-color: white;
+  border: 1px solid black;
+  color: black;
 }
 
 .rightButton.rightButton {
-    justify-self: flex-end;
+  justify-self: flex-end;
 }
 
 .leftButton.leftButton {
-    background-color: rgb(49, 167, 49);
-    justify-self: flex-start;
+  background-color: rgb(49, 167, 49);
+  justify-self: flex-start;
+}
+
+.confirmed.confirmed:disabled {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  cursor: default;
 }

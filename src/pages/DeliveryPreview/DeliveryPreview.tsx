@@ -1,3 +1,5 @@
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
@@ -11,10 +13,11 @@ const DeliveryPreview = () => {
   const navigate = useNavigate();
 
   const [mapMarker, setMapMarker] = useState(null);
+  const [confirmed, setConfirmed] = useState(false);
 
   const addressState = useAddressState();
 
-  const onMapLoad = (map) => {
+  const onMapLoad = ({ map }) => {
     let request = {
       placeId: addressState.placeID,
       fields: ["geometry"],
@@ -26,17 +29,38 @@ const DeliveryPreview = () => {
       setMapMarker({
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng(),
+        firstName: addressState.firstName,
+        lastName: addressState.lastName,
+        address: addressState.address,
       });
     }
   };
 
-  return (
-    <Wrapper>
-      <Typography align="left" variant="h4" className="confirmLocation">
-        Confirm Location
-      </Typography>
-      <Map markers={[mapMarker]} onMapLoad={onMapLoad} />
-      <Wrapper.BottomRow>
+  const onConfirm = () => {
+    setConfirmed(true);
+  };
+
+  const getButtons = () =>
+    confirmed ? (
+      <>
+        <Button
+          variant="contained"
+          className="bottomRowButton leftButton"
+          onClick={() => navigate("/deliveryMap")}
+        >
+          See all deliveries
+        </Button>
+        <Button
+          disabled
+          variant="contained"
+          className="bottomRowButton rightButton confirmed"
+        >
+          <FontAwesomeIcon icon={faCheck} color="green" className="checkIcon" />{" "}
+          Confirmed
+        </Button>
+      </>
+    ) : (
+      <>
         <Button
           variant="contained"
           className="bottomRowButton leftButton"
@@ -47,11 +71,22 @@ const DeliveryPreview = () => {
         <Button
           variant="contained"
           className="bottomRowButton rightButton"
-          onClick={() => navigate("/deliveryMap")}
+          onClick={onConfirm}
         >
           Confirm
         </Button>
-      </Wrapper.BottomRow>
+      </>
+    );
+
+  return (
+    <Wrapper>
+      <Typography align="center" variant="h2" className="confirmLocation">
+        {confirmed
+          ? "Your delivery is on its way."
+          : "Please confirm your location."}
+      </Typography>
+      <Map markers={[mapMarker]} onMapLoad={onMapLoad} />
+      <Wrapper.BottomRow>{getButtons()}</Wrapper.BottomRow>
     </Wrapper>
   );
 };
