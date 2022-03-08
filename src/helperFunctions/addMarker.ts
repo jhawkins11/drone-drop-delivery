@@ -3,7 +3,7 @@ import axios from "axios";
 const addMarker = async (marker) => {
   try {
     const response = await axios.post(
-      "http://localhost:9001/api/markers",
+      `${process.env.REACT_APP_API_URL}api/markers`,
       marker
     );
     if (response.status === 200) {

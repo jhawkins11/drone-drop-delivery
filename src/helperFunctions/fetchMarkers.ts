@@ -1,8 +1,10 @@
-import axios from 'axios';
+import axios from "axios";
 
 const fetchMarkers = async () => {
   try {
-    const response = await axios.get('http://localhost:9001/api/markers');
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}api/markers`
+    );
     if (response.status === 200) {
       return response.data;
     }

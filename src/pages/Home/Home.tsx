@@ -1,9 +1,8 @@
-import { Button, Typography } from '@mui/material';
-import './Home.css';
-import React from 'react';
-import SignUpForm from '../../components/SignUpForm/SignUpForm';
-import Wrapper from '../../components/Wrapper/Wrapper';
-import { useNavigate } from 'react-router-dom';
+import { Button, Typography } from "@mui/material";
+import "./Home.css";
+import React from "react";
+import SignUpForm from "../../components/SignUpForm/SignUpForm";
+import Wrapper from "../../components/Wrapper/Wrapper";
 
 const Home = () => {
   return (
@@ -17,6 +16,9 @@ const Home = () => {
         </Typography>
 
         <SignUpForm />
+        <Typography align="left" variant="caption">
+          *Your name and address will be visible to other users.
+        </Typography>
         <Wrapper.BottomRow>
           <Button
             variant="contained"
