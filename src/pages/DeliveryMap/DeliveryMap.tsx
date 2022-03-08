@@ -14,7 +14,7 @@ const DeliveryMap = () => {
   useEffect(() => {
     async function getMarkers() {
       const data = await fetchMarkers();
-      setMarkers(data);
+      setMarkers(data.markers);
     }
     getMarkers();
   }, []);

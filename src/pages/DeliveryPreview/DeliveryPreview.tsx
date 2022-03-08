@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Map from "../../components/Map/Map";
 import Wrapper from "../../components/Wrapper/Wrapper";
+import addMarker from "../../helperFunctions/addMarker";
 import { useAddressState } from "../../store/slices/addressSlice";
 import "./DeliveryPreview.css";
 
@@ -38,6 +39,7 @@ const DeliveryPreview = () => {
 
   const onConfirm = () => {
     setConfirmed(true);
+    addMarker(mapMarker);
   };
 
   const getButtons = () =>

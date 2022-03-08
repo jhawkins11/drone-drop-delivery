@@ -91,7 +91,7 @@ const Map = ({
         }}
         defaultCenter={{ lat: 41.881832, lng: -87.623177 }}
         center={markers[0]}
-        zoom={markers.length > 1 ? 2 : 17}
+        zoom={markers.length > 1 ? 6 : 17}
         onGoogleApiLoaded={onMapLoad}
       >
         {markers?.map((location) => (
