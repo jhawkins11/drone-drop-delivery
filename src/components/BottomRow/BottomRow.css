@@ -7,7 +7,7 @@
   grid-auto-flow: column;
   align-self: flex-end;
 }
-
+/* increase specificity to override MUI classes */
 .bottomRowButton.bottomRowButton {
   font-size: 15px;
   letter-spacing: 2px;

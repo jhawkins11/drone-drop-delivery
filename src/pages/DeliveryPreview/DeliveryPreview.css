@@ -1,3 +1,5 @@
+/* increase specificity to override MUI classes */
+
 .confirmLocation.confirmLocation {
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
