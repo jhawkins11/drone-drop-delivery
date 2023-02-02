@@ -2,15 +2,7 @@ import axios from 'axios';
 
 const fetchMarkers = async () => {
   try {
-    const response = await axios.get(
-      `${process.env.REACT_APP_API_URL}api/markers`,
-      {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Security-Policy': 'upgrade-insecure-requests',
-        },
-      }
-    );
+    const response = await axios.get(`/api/api/markers`);
     if (response.status === 200) {
       return response.data;
     }
