@@ -1,1 +1,1 @@
-/api/* http://drone-drop-api.us-east-1.elasticbeanstalk.com/:splat 200
+/api/* https://drone-drop-api.onrender.com/:splat 200
